@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Patria Doors</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-brand">
+                    <span class="brand-name">Patria Doors</span>
+                </div>
+                
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span class="hamburger"></span>
+                </button>
+                
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="nav-item cta-item"><a href="https://wa.me/2348134758425" class="nav-cta">Contact us</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="product-page">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="separator">></span>
+                <a href="#" id="categoryLink">Category</a>
+                <span class="separator">></span>
+                <span id="productName">Product Name</span>
+            </div>
+
+            <div class="product-details">
+                <div class="product-image-section">
+                    <div class="main-image">
+                        <img id="productImage" src="" alt="Product Image">
+                    </div>
+                </div>
+
+                <div class="product-info-section">
+                    <h1 id="productTitle">Product Title</h1>
+                    <div class="product-description">
+                        <p id="productDescription">Product description will be loaded here...</p>
+                    </div>
+                    
+                    <div class="product-actions">
+                        <button class="buy-now-btn" id="buyNowBtn">
+                            <i class="fab fa-whatsapp"></i>
+                            Buy Now on WhatsApp
+                        </button>
+                        <button class="back-btn" onclick="history.back()">
+                            <i class="fas fa-arrow-left"></i>
+                            Back to Category
+                        </button>
+                    </div>
+
+                    <div class="product-features">
+                        <h3>Key Features</h3>
+                        <ul id="productFeatures">
+                            <li>High-quality materials and construction</li>
+                            <li>Professional design and finish</li>
+                            <li>Durable and long-lasting</li>
+                            <li>Easy installation and maintenance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Patria Doors</h3>
+                    <p>Engineering excellence in door solutions since 2015. We provide reliable, high-performance doors for Nigeria's dynamic market.</p>
+                    
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone-alt"></i> +234 813 475 8425</p>
+                        <p><i class="fas fa-map-marker-alt"></i> KM 6 Idiroko Rd, Onipanu, Ota 112104, Ogun State, Nigeria</p>
+                        <p><i class="fas fa-clock"></i> Mon-Sat: 8:00 AM - 6:00 PM</p>
+                    </div>
+                    <a href="https://wa.me/2348134758425" class="btn" target="_blank" style="margin-top: 15px;">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Chat
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Patria Doors Nigeria. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Load product details from URL parameters
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productName = urlParams.get('name');
+            const productImage = urlParams.get('image');
+            const productDescription = urlParams.get('description');
+            const category = urlParams.get('category');
+            const categoryLink = urlParams.get('categoryLink');
+
+            if (productName) {
+                document.getElementById('productTitle').textContent = productName;
+                document.getElementById('productName').textContent = productName;
+                document.title = productName + ' - Patria Doors';
+            }
+
+            if (productImage) {
+                document.getElementById('productImage').src = productImage;
+                document.getElementById('productImage').alt = productName;
+            }
+
+            if (productDescription) {
+                document.getElementById('productDescription').textContent = productDescription;
+            }
+
+            if (category) {
+                document.getElementById('categoryLink').textContent = category;
+            }
+
+            if (categoryLink) {
+                document.getElementById('categoryLink').href = categoryLink;
+            }
+
+            // Update buy button
+            const buyBtn = document.getElementById('buyNowBtn');
+            buyBtn.addEventListener('click', function() {
+                const whatsappNumber = '+2348134758425';
+                const message = `Hello Patria Doors, I'm interested in your ${productName}. Please send me more details and pricing information.`;
+                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+                window.open(whatsappUrl, '_blank');
+            });
+        });
+    </script>
+</body>
+</html>
