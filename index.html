@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patria Doors - Premium Door Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #D4AF37; /* Gold */
+            --secondary: #003366; /* Navy blue */
+            --accent: #E31837; /* Red */
+            --light: #F8F8F8;
+            --dark: #222222;
+            --text: #444444;
+            --shadow: 0 8px 24px rgba(0,0,0,0.12);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        .main-header {
+            background-color: rgba(255,255,255,0.95);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 12px 0;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .header-logo {
+            height: 48px;
+            width: auto;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+        
+        .brand-name {
+            font-family: 'Libre Baskerville', serif;
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: 1.4rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            position: relative;
+            padding: 8px 0;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent);
+        }
+        
+        .nav-link.active {
+            color: var(--accent);
+        }
+        
+        .nav-link.active:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent);
+            border-radius: 3px;
+        }
+        
+        .nav-cta {
+            background: linear-gradient(135deg, var(--accent), #C8102E);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(227, 24, 55, 0.3);
+            border: none;
+            font-size: 0.95rem;
+        }
+        
+        .nav-cta:hover {
+            background: linear-gradient(135deg, #C8102E, var(--accent));
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(227, 24, 55, 0.4);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 800px;
+            position: relative;
+            margin-top: 0;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+           
+            z-index: 1;
+        }
+        
+        .hero-slideshow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .hero-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
+        }
+        
+        .hero-slide:first-child {
+            opacity: 1;
+        }
+        
+        .hero-container {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            z-index: 2;
+        }
+        
+        .hero-content {
+            max-width: 700px;
+            padding: 0 40px;
+            color: rgb(13, 55, 172);
+        }
+        
+        .hero-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+        
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--primary), #C9A227);
+            color: var(--secondary);
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            font-size: 1.1rem;
+        }
+        
+        .hero-cta:hover {
+            background: linear-gradient(135deg, #C9A227, var(--primary));
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+        }
+        
+        /* Stats Section */
+        .stats {
+            padding: 80px 0;
+            background-color: white;
+            position: relative;
+            z-index: 1;
+            margin-top: -60px;
+            border-radius: 20px 20px 0 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .stat-item {
+            padding: 30px 20px;
+            background-color: var(--light);
+            border-radius: 12px;
+            transition: var(--transition);
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-family: 'Libre Baskerville', serif;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        
+        /* Categories Section */
+        .categories {
+    padding: 100px 0;
+    background-color: var(--light);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 2.5rem;
+    color: var(--secondary);
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary);
+    border-radius: 2px;
+}
+
+.section-header p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: var(--text);
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.category-card {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: var(--transition);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.category-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.card-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: var(--transition);
+}
+
+.category-card:hover .card-image img {
+    transform: scale(1.05);
+}
+
+.card-content {
+    padding: 20px;
+    text-align: center;
+    background: white;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-content h3 {
+    color: var(--secondary);
+    font-size: 1.3rem;
+    margin: 0;
+    transition: var(--transition);
+}
+
+.category-card:hover .card-content h3 {
+    color: var(--accent);
+}
+
+@media (max-width: 768px) {
+    .section-header h2 {
+        font-size: 2rem;
+    }
+    
+    .section-header p {
+        font-size: 1rem;
+    }
+    
+    .category-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    .categories {
+        padding: 60px 0;
+    }
+    
+    .section-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .card-content h3 {
+        font-size: 1.1rem;
+    }
+}
+        
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background-color: rgb(255, 255, 255);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            
+            z-index: 0;
+            clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+        
+        .about-content {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .about-content img {
+            width: 55%;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .about-content img:hover {
+            transform: scale(1.02);
+        }
+        
+        .about-text {
+            width: 45%;
+        }
+        
+        .about-text h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.2rem;
+            color: var(--secondary);
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--accent), #C8102E);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(227, 24, 55, 0.3);
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background: linear-gradient(135deg, #C8102E, var(--accent));
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(227, 24, 55, 0.4);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+            background-color: var(--secondary);
+            color: white;
+            position: relative;
+        }
+        
+        .testimonials .section-header h2 {
+            color: white;
+        }
+        
+        .testimonials .section-header h2::after {
+            background-color: var(--primary);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            padding: 30px;
+            border-radius: 12px;
+            transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            background-color: rgba(255,255,255,0.15);
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .testimonial-content::before {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            top: -20px;
+            left: -15px;
+            opacity: 0.2;
+            font-family: 'Libre Baskerville', serif;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--secondary), #002244);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
+        }
+        
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(227, 24, 55, 0.1);
+            border-radius: 50%;
+        }
+        
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-content h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-content p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--primary), #C9A227);
+            color: var(--secondary);
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            font-size: 1.1rem;
+        }
+        
+        .cta-btn:hover {
+            background: linear-gradient(135deg, #C9A227, var(--primary));
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 80px 0 30px;
+            position: relative;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-section h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .footer-section p {
+            opacity: 0.8;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s;
+            display: inline-block;
+            font-size: 0.95rem;
+        }
+        
+        .footer-section ul li a:hover {
+            opacity: 1;
+            transform: translateX(5px);
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .social-links a:hover {
+            opacity: 1;
+            color: var(--primary);
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+        
+        .hamburger {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background-color: var(--dark);
+            position: relative;
+            transition: all 0.3s;
+            border-radius: 3px;
+        }
+        
+        .hamburger:before,
+        .hamburger:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: var(--dark);
+            left: 0;
+            transition: all 0.3s;
+            border-radius: 3px;
+        }
+        
+        .hamburger:before {
+            top: -8px;
+        }
+        
+        .hamburger:after {
+            bottom: -8px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .about-content {
+                gap: 40px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-content img,
+            .about-text {
+                width: 100%;
+            }
+            
+            .about::before {
+                display: none;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .main-nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 85%;
+                max-width: 350px;
+                height: 100vh;
+                background-color: white;
+                box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+                transition: right 0.4s ease;
+                padding: 100px 30px 30px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            
+            .main-nav.active {
+                right: 0;
+            }
+            
+            .main-nav ul {
+                flex-direction: column;
+                gap: 25px;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .mobile-menu-toggle.active .hamburger {
+                background-color: transparent;
+            }
+            
+            .mobile-menu-toggle.active .hamburger:before {
+                transform: rotate(45deg);
+                top: 0;
+            }
+            
+            .mobile-menu-toggle.active .hamburger:after {
+                transform: rotate(-45deg);
+                bottom: 0;
+            }
+            
+            .hero {
+                height: 90vh;
+                min-height: 700px;
+            }
+            
+            .hero-content {
+                padding: 0 20px;
+                text-align: center;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .stats {
+                margin-top: -40px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .brand-name {
+                font-size: 1.1rem;
+            }
+            
+            .header-logo {
+                height: 40px;
+            }
+            
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-cta {
+                padding: 14px 28px;
+                font-size: 1rem;
+            }
+            
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-content h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-brand">
+                    
+                    <span class="brand-name">Patria Doors</span>
+                </div>
+                
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span class="hamburger"></span>
+                </button>
+                
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
+                        
+                        <li class="nav-item"><a href="#categories" class="nav-link">Our Doors</a></li>
+                        
+                        <li class="nav-item cta-item"><a href="https://wa.me/2348134758425" class="nav-cta">Contact us</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-slideshow">
+                <div class="hero-slide" style="background-image: url('images/slider1.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('images/slider2.jpg');"></div>shring-wrapper.webp');"></div>
+                <div class="hero-slide" style="background-image: url('images/slider3.jpg');"></div>
+            </div>
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h2 class="hero-title">Patria Doors</h2>
+                    <p class="hero-subtitle">Premium doors designed to optimize your operations and maximize efficiency</p>
+                    <a href="https://wa.me/2348134758425?text=Hello%20Patria%20Doors,%20I%20need%20professional%20advice%20on%20Doors%20Solutions" 
+                       class="hero-cta" 
+                       target="_blank">
+                       <i class="fas fa-chevron-right"></i> Chat With Us
+                    </a>
+                </div>
+            </div>
+        </section>:
+        
+
+        <section class="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Years of Excellence</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Satisfied Clients</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label">Successful Installations</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Technical Support</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="categories" class="categories">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Shop Our doors</h2>
+                    <p>From Pivot doors to large Security doors, we have different categories of doors, the perfect door solutions tailored to your specific needs and operational scale</p>
+                </div>
+                <div class="category-grid">
+                    <div class="category-card" onclick="window.location.href='fast-food.html'">
+                        <div class="card-image">
+                            <img src="images/Copper Cast Door.JPG" alt="Copper Cast Door">
+                        </div>
+                        <div class="card-content">
+                            <h3>Copper Cast Door</h3>
+                        </div>
+                    </div>
+                    <div class="category-card" onclick="window.location.href='smart-locks.html'">
+                        <div class="card-image">
+                            <img src="images/lock1.JPG" alt= "Smart Locks">
+                        </div>
+                        <div class="card-content">
+                            <h3>Smart Locks </h3>
+                        </div>
+                    </div>
+                    <div class="category-card" onclick="window.location.href='bakery.html'">
+                        <div class="card-image">
+                            <img src="images/patria2.JPG" alt="Patria Doors">
+                        </div>
+                        <div class="card-content">
+                            <h3>Patria Doors</h3>
+                        </div>
+                    </div>
+                    <div class="category-card" onclick="window.location.href='packaging.html'">
+                        <div class="card-image">
+                            <img src="images/Copper Villa Royal Doors.JPG" alt="Copper Villa Royal Doors">
+                        </div>
+                        <div class="card-content">
+                            <h3>Copper Villa Royal Doors</h3>
+                        </div>
+                    </div>
+                    <div class="category-card" onclick="window.location.href='food-processing.html'">
+                        <div class="card-image">
+                            <img src="images/Israeli Security Door.JPG" alt="Israeli Security Door">
+                        </div>
+                        <div class="card-content">
+                            <h3>Israeli Security Door</h3>
+                        </div>
+                    </div>
+                    <div class="category-card" onclick="window.location.href='kitchen.html'">
+                        <div class="card-image">
+                            <img src="images/Turkey Steel Luxury Door.JPG" alt= "Turkey Steel Luxury Door">
+                        </div>
+                        <div class="card-content">
+                            <h3>Turkey Steel Luxury Door</h3>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <img src="images/building.JPG" alt="Our Technical Team">
+                    <div class="about-text">
+                        <h2>Premium door Solutions For Service Excellence</h2>
+                        <p>Since 2010, Patria Doors Nigeria has been the trusted partner for all door solutions across Nigeria. We don't just sell doors - we deliver solutions that transform Premium door operations.</p>
+                        <p>Our technical team carefully evaluates every piece of door for durability, efficiency, and performance under Nigerian and international operating conditions. We partner with leading global manufacturers to bring you technology that delivers consistent results while withstanding the demands of high-volume operations.</p>
+                        <p>From initial consultation to installation and after-sales support, we provide comprehensive service that ensures your door operates at peak performance. Our solutions are designed to maximize workflow efficiency.</p>
+                        <a href="https://wa.me/2348134758425" class="btn" target="_blank">
+                            <i class="fas fa-hard-hat"></i> Talk to Us
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Trusted By Industry Leaders</h2>
+                    <p>Hear from service professionals who have transformed their operations with our door solutions</p>
+                </div>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>After installing the Israeli security door, no one has been able to break into our facility again. Their technical support team is exceptional.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="images/Israeli Security Door 6.JPG" alt="Amina Bakery">
+                            <div class="author-info">
+                                <h4>Amina Bakery</h4>
+                                <p>Lagos, Nigeria</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>The doors we purchased three years ago are still in perfect shape despite our 24/7 operations. This is the reliability we need.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="images/Copper Cast Door 10.JPG" alt="Cold Store Ltd">
+                            <div class="author-info">
+                                <h4>Cold Store Ltd</h4>
+                                <p>Abuja, Nigeria</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>Their door design consultation completely optimized our workflow.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="images/Pivot 7.JPG" alt="Urban Eats">
+                            <div class="author-info">
+                                <h4>Urban Eats</h4>
+                                <p>Port Harcourt, Nigeria</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to Transform Your Doors Operations?</h2>
+                    <p>Schedule a consultation with our sales team to show you our doors to meet your specific building needs and budget requirements.</p>
+                    <a href="https://wa.me/2348134758425" class="cta-btn" target="_blank">
+                        <i class="fas fa-calendar-check"></i> BOOK APPOINTMENT
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Patria Doors</h3>
+                    <p>Engineering excellence in the door importation industry since 2010. We provide reliable, high-performance solutions for Nigeria's dynamic door importation industry.</p>
+                    
+                </div>
+                
+                
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone-alt"></i> +234 813 475 8425</p>
+                        
+                        <p><i class="fas fa-map-marker-alt"></i> KM 6 Idiroko Rd, Onipanu, Ota 112104, Ogun State</p>
+                        <p><i class="fas fa-clock"></i> Mon-Sat: 8:00 AM - 6:00 PM</p>
+                    </div>
+                    <a href="https://wa.me/2348134758425" class="btn" target="_blank" style="margin-top: 15px;">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Chat
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Patria Doors Nigeria. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const mainNav = document.querySelector('.main-nav');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenuToggle.classList.toggle('active');
+            mainNav.classList.toggle('active');
+            document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
+        });
+        
+        // Close mobile menu when clicking on nav links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if(mainNav.classList.contains('active')) {
+                    mobileMenuToggle.classList.remove('active');
+                    mainNav.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+        
+        // Hero Slideshow
+        const heroSlides = document.querySelectorAll('.hero-slide');
+        let currentSlide = 0;
+        
+        function showSlide(n) {
+            heroSlides.forEach(slide => {
+                slide.style.opacity = 0;
+            });
+            
+            heroSlides[n].style.opacity = 1;
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % heroSlides.length;
+            showSlide(currentSlide);
+        }
+        
+        // Change slide every 5 seconds
+        setInterval(nextSlide, 5000);
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if(this.getAttribute('href') === '#') return;
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.main-header');
+            if(window.scrollY > 100) {
+                header.style.padding = '8px 0';
+                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.12)';
+            } else {
+                header.style.padding = '12px 0';
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.08)';
+            }
+        });
+        
+        // Animate category cards on scroll
+        const animateOnScroll = () => {
+            const cards = document.querySelectorAll('.category-card');
+            cards.forEach(card => {
+                const cardPosition = card.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if(cardPosition < screenPosition) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state for animation
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patria Doors</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-brand">
+                    <span class="brand-name">Patria Doors</span>
+                </div>
+                
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span class="hamburger"></span>
+                </button>
+                
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
+                        
+                        
+                        
+                        <li class="nav-item cta-item"><a href="https://wa.me/2348134758425" class="nav-cta">Contact us</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="products-container">
+        <h2>Smart Locks</h2>
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="Search equipment...">
+            <button class="search-button">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        <div class="products-grid">
+            <div class="product-card" data-id="bk1" data-large-image="images/lock1.JPG" data-description="Key Features:
+
+            Smart Lock 1 is a smart lock that is designed to be used with a smart lock system.">
+                <img src="images/lock1.JPG" alt="Patria 1 Door Proofer">
+                <div class="product-info">
+                    <h3>Smart Locks 1</h3>
+                    <button class="buy-btn" data-product="Smart Locks 1">Buy Now</button>
+                </div>
+            </div>
+            
+            <div class="product-card" data-id="bk2" data-large-image="images/lock2.JPG" data-description="Smart Lock 2 is perfect for homes and businesses that need a secure and convenient way to lock and unlock their doors.">
+                <img src="images/lock2.JPG" alt="Double Door Proofer">
+                <div class="product-info">
+                    <h3>Smart Locks 2</h3>
+                    <button class="buy-btn" data-product="Smart Locks 2">Buy Now</button>
+                </div>
+            </div>
+            
+            <div class="product-card" data-id="bk3" data-large-image="images/lock3.JPG" data-description="Smart Lock 3 is crafted from high-quality materials to ensure durability and long-lasting performance.">
+                <img src="images/lock3.JPG" alt="Combi Oven">
+                <div class="product-info">
+                    <h3>Smart Locks 3</h3>
+                    <button class="buy-btn" data-product="Smart Locks 3">Buy Now</button>
+                </div>
+            </div>
+            
+                    <div class="product-card" data-id="bk4" data-large-image="images/lock4.JPG" data-description="Smart Lock 4 is designed with advanced technology to provide seamless and secure access to your property.">
+                <img src="images/lock4.JPG" alt="Industrial Bread Slicer">
+                <div class="product-info">
+                    <h3>Smart Locks 4</h3>
+                    <button class="buy-btn" data-product="Smart Locks 4">Buy Now</button>
+                </div>
+            </div>
+            
+            <div class="product-card" data-id="bk5" data-large-image="images/lock5.JPG" data-description="Smart Lock 5 is designed with advanced technology to provide seamless and secure access to your property.">
+                <img src="images/lock5.JPG" alt="Flour Dough Sheeter">
+                <div class="product-info">
+                    <h3>Smart Locks 5</h3>
+                    <button class="buy-btn" data-product="Smart Locks 5">Buy Now</button>
+                </div>
+            </div>
+            
+            
+
+               
+            
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Patria Doors</h3>
+                    <p>Engineering excellence in the door importation industry since 2010. We provide reliable, high-performance solutions for Nigeria's dynamic door importation industry.</p>
+                    
+                </div>
+                
+                
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone-alt"></i> +234 813 475 8425</p>
+                        
+                        <p><i class="fas fa-map-marker-alt"></i> KM 6 Idiroko Rd, Onipanu, Ota 112104, Ogun State, Nigeria</p>
+                        <p><i class="fas fa-clock"></i> Mon-Sat: 8:00 AM - 6:00 PM</p>
+                    </div>
+                    <a href="https://wa.me/2348134758425" class="btn" target="_blank" style="margin-top: 15px;">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Chat
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Patria Doors Nigeria. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Product Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modalImage" src="" alt="">
+                </div>
+                <div class="modal-info">
+                    <h2 id="modalTitle"></h2>
+                    <p id="modalDescription"></p>
+                    <button class="modal-buy-btn" id="modalBuyBtn">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
